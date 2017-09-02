@@ -271,6 +271,22 @@
 <li>bias, weights是在Tensorflow模型中定义的变量(Variable). 而gradients是由tensorflow框架基于optimizer自动生成。</li>
 <li>同时还有一个GradientDescent，依赖于bias, weights, gradients</li>
 </ul>
+<h3 id="Minimize实现细节"><a href="#Minimize实现细节" class="headerlink" title="Minimize实现细节"></a>Minimize实现细节</h3><p>使用了GradientDescentOptimizer意味着使用梯度下降的方式进行更新，在Tensorflow中使用<strong>auto differentiation</strong> 来自动更新w和b的值，然后来最小化loss。</p>
+<p>当然也可以基于Optimizer自己进行gradient计算。在上面的代码中，直接调用<code>optimizer.minimize(loss)</code>,在这个调用背后做了计算梯度并且将梯度应用到各个变量上去(<strong>computing the gradients and applying them to the variables</strong>)。若想在计算梯度和将梯度应用到变量去中间加入一个逻辑，可以进行如下操作：</p>
+<ol>
+<li>调用<code>compute_gradients()</code>来计算梯度</li>
+<li>对gradients进行处理</li>
+<li>调用<code>apply_gradients()</code>来将梯度应用到变量上去</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># create an optimizer</span></div><div class="line">optimizer = GradientDescentOptimizer(learning_rate=<span class="number">0.01</span>)</div><div class="line"></div><div class="line"><span class="comment"># compute the gradients for a list of variables</span></div><div class="line">grads_and_vars = optimizer.compute_gradients(loss, &lt;list of varibles&gt;)</div><div class="line"></div><div class="line"><span class="comment"># grads_and_vars is a list of tuples (gradient, variable). do whatever you need</span></div><div class="line">capped_grads_and_vars = [(MyCapper(gv[<span class="number">0</span>]), gv[<span class="number">1</span>]) <span class="keyword">for</span> gv <span class="keyword">in</span> grads_and_vars]</div><div class="line"></div><div class="line"><span class="comment"># ask the optimizer to apply the capped gradients</span></div><div class="line">optimizer.apply_gradients(capped_grads_and_vars)</div></pre></td></tr></table></figure>
+<h3 id="梯度计算细节"><a href="#梯度计算细节" class="headerlink" title="梯度计算细节"></a>梯度计算细节</h3><p>虽然optimizer可以自动计算graph的梯度，但是对于新的optimizer的作者或者高级用户还是希望能够调用底层的接口来进行梯度计算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">tf.gradients(ys, </div><div class="line">             xs, </div><div class="line">             grad_ys=<span class="keyword">None</span>, </div><div class="line">             name=<span class="string">'gradients'</span>, </div><div class="line">             colocate_gradients_with_ops=<span class="keyword">False</span>,</div><div class="line">             gate_gradients=<span class="keyword">False</span>, </div><div class="line">             aggregation_method=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<p>使用上面的函数来计算针对<code>xs</code>对<code>ys</code>的符号偏导。</p>
+<blockquote>
+<p>TODO: 增加更多的梯度计算细节</p>
+</blockquote>
+<h3 id="Optimizer列表"><a href="#Optimizer列表" class="headerlink" title="Optimizer列表"></a>Optimizer列表</h3><p>当前在Tensorflow中已经提供了一系列的Optimizer，总结如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">tf.train.GradientDescentOptimizer</div><div class="line">tf.train.AdadeltaOptimizer</div><div class="line">tf.train.AdagradOptimizer</div><div class="line">tf.train.AdagradDAOptimizer</div><div class="line">tf.train.MomentumOptimizer</div><div class="line">tf.train.AdamOptimizer</div><div class="line">tf.train.FtrlOptimizer</div><div class="line">tf.train.ProximalGradientDescentOptimizer</div><div class="line">tf.train.ProximalAdagradOptimizer</div><div class="line">tf.train.RMSPropOptimizer</div></pre></td></tr></table></figure>
 
         
         </div>
@@ -281,7 +297,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-concept/" data-id="cj732hs8g0000pyz8rh256xtq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-concept/" data-id="cj73ie1vc0000j7z8cw1jxhgr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -418,7 +434,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-index/" data-id="cj732hs8n0002pyz85uydeyuh" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-index/" data-id="cj73ie1vk0002j7z8qu7c7234" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
