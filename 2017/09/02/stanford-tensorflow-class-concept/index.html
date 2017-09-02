@@ -3,19 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Stanford大学Tensorflow课程基本概念 | To be a hacker!</title>
+    <title>Stanford TF基本概念 | To be a hacker!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Stanford大学Tensorflow课程基本概念。主要是包括有: GraphSessionOperationTensorboardOptimizer">
+    <meta name="description" content="Stanford大学Tensorflow课程基本概念。主要是包括有: Graph在Graph中，定义多个Operation. 常量Constant特别需要知道的是Constant和Variable的区别，Constant表示常量，其值是存储在GraphDef中，如定义 12345import tensorflow as tfx = tf.constant([[1, 2, 3], [4, 5, 6]">
 <meta name="keywords" content="CS20SI,Tensorflow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Stanford大学Tensorflow课程基本概念">
+<meta property="og:title" content="Stanford TF基本概念">
 <meta property="og:url" content="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-concept/index.html">
 <meta property="og:site_name" content="To be a hacker!">
-<meta property="og:description" content="Stanford大学Tensorflow课程基本概念。主要是包括有: GraphSessionOperationTensorboardOptimizer">
-<meta property="og:updated_time" content="2017-09-02T03:04:47.000Z">
+<meta property="og:description" content="Stanford大学Tensorflow课程基本概念。主要是包括有: Graph在Graph中，定义多个Operation. 常量Constant特别需要知道的是Constant和Variable的区别，Constant表示常量，其值是存储在GraphDef中，如定义 12345import tensorflow as tfx = tf.constant([[1, 2, 3], [4, 5, 6]">
+<meta property="og:image" content="http://ony0nt8m1.bkt.clouddn.com/tensorboard_add.png">
+<meta property="og:updated_time" content="2017-09-02T06:26:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Stanford大学Tensorflow课程基本概念">
-<meta name="twitter:description" content="Stanford大学Tensorflow课程基本概念。主要是包括有: GraphSessionOperationTensorboardOptimizer">
+<meta name="twitter:title" content="Stanford TF基本概念">
+<meta name="twitter:description" content="Stanford大学Tensorflow课程基本概念。主要是包括有: Graph在Graph中，定义多个Operation. 常量Constant特别需要知道的是Constant和Variable的区别，Constant表示常量，其值是存储在GraphDef中，如定义 12345import tensorflow as tfx = tf.constant([[1, 2, 3], [4, 5, 6]">
+<meta name="twitter:image" content="http://ony0nt8m1.bkt.clouddn.com/tensorboard_add.png">
     
 
     
@@ -137,7 +139,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Stanford大学Tensorflow课程基本概念
+            Stanford TF基本概念
         </h1>
     
 
@@ -174,11 +176,104 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph"><span class="toc-number">1.</span> <span class="toc-text">Graph</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session"><span class="toc-number">2.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operation"><span class="toc-number">3.</span> <span class="toc-text">Operation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorboard"><span class="toc-number">4.</span> <span class="toc-text">Tensorboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimizer"><span class="toc-number">5.</span> <span class="toc-text">Optimizer</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph"><span class="toc-number">1.</span> <span class="toc-text">Graph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#常量Constant"><span class="toc-number">1.1.</span> <span class="toc-text">常量Constant</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量Variable"><span class="toc-number">1.2.</span> <span class="toc-text">变量Variable</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session"><span class="toc-number">2.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operation"><span class="toc-number">3.</span> <span class="toc-text">Operation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorboard"><span class="toc-number">4.</span> <span class="toc-text">Tensorboard</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Optimizer"><span class="toc-number">5.</span> <span class="toc-text">Optimizer</span></a></li></ol>
                 </div>
             
             <p>Stanford大学Tensorflow课程基本概念。主要是包括有:</p>
-<h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><h2 id="Tensorboard"><a href="#Tensorboard" class="headerlink" title="Tensorboard"></a>Tensorboard</h2><h2 id="Optimizer"><a href="#Optimizer" class="headerlink" title="Optimizer"></a>Optimizer</h2>
+<h2 id="Graph"><a href="#Graph" class="headerlink" title="Graph"></a>Graph</h2><p>在Graph中，定义多个Operation.</p>
+<h3 id="常量Constant"><a href="#常量Constant" class="headerlink" title="常量Constant"></a>常量Constant</h3><p>特别需要知道的是Constant和Variable的区别，Constant表示常量，<strong>其值是存储在GraphDef中</strong>，如定义</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line">x = tf.constant([[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>], [<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]], name=<span class="string">'x'</span>)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">	<span class="keyword">print</span> sess.graph.as_graph_def()</div></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">node &#123;</div><div class="line">  name: "x"</div><div class="line">  op: "Const"</div><div class="line">  attr &#123;</div><div class="line">    key: "dtype"</div><div class="line">    value &#123;</div><div class="line">      type: DT_INT32</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  attr &#123;</div><div class="line">    key: "value"</div><div class="line">    value &#123;</div><div class="line">      tensor &#123;</div><div class="line">        dtype: DT_INT32</div><div class="line">        tensor_shape &#123;</div><div class="line">          dim &#123;</div><div class="line">            size: 3</div><div class="line">          &#125;</div><div class="line">          dim &#123;</div><div class="line">            size: 3</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        tensor_content: "\001\000\000\000\002\000\000\000\003\000\000\000\004\000\000\000\005\000\000\000\006\000\000\000\007\000\000\000\010\000\000\000\t\000\000\000"</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="变量Variable"><a href="#变量Variable" class="headerlink" title="变量Variable"></a>变量Variable</h3><p>使用<code>tf.constant</code>来定义常量，使用<code>tf.Variable</code>来定义变量，是存在着很大的不同，原因是:</p>
+<blockquote>
+<p>tf.constant是一个operation, tf.Variable是一个类. 参考Variable类里面的说明</p>
+<p>A variable maintains state in the graph across calls to ‘run()’. 即在各个run运行过程中状态是一致的，上个run过程中更改了该状态，下一个run过程中是可以读取最新的更新完之后的状态。</p>
+<p>在初始化的时候，会传入该变量的初始化值，在初始化值中就已经包括有type和shape信息，传入初始化值之后就固定了，后面只能通过assign等方法来更改其中的值。</p>
+<p>在Graph运行之前，Variable必须要显式地初始化掉，如调用sess.run(v.initializer). 最常见的方式是新建一个op，init_op = tf.global_variables_initializer(), 然后sess.run(init_op)</p>
+</blockquote>
+<p>在<code>tf.Variable</code>这个类中，定义了好几个方法:</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>initializer</td>
+<td>初始化</td>
+</tr>
+<tr>
+<td>value()</td>
+<td>读操作，读取值</td>
+</tr>
+<tr>
+<td>assign()</td>
+<td>写操作，更改值</td>
+</tr>
+<tr>
+<td>assign_add()</td>
+<td>写操作，增加值</td>
+</tr>
+<tr>
+<td>assign_sub()</td>
+<td>写操作，减少值</td>
+</tr>
+<tr>
+<td>eval()</td>
+<td>读操作，评估得到的变量值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><h2 id="Operation"><a href="#Operation" class="headerlink" title="Operation"></a>Operation</h2><p>现有的Operation列表有：</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Element-wise mathematical operations</td>
+<td>Add, Sub, Mul, Div, Exp, Log, Greater, Less, Equal, …</td>
+</tr>
+<tr>
+<td>Array operations</td>
+<td>Concat, Slice, Split, Constant, Rank, Shape, Shuffle, …</td>
+</tr>
+<tr>
+<td>Matrix operations</td>
+<td>MatMul, MatrixInverse, MatrixDeterminant, …</td>
+</tr>
+<tr>
+<td>Stateful operations</td>
+<td>Variable, Assign, AssignAdd, …</td>
+</tr>
+<tr>
+<td>Neural network building blocks</td>
+<td>SoftMax, Sigmoid, ReLU, Convolution2D, MaxPool, …</td>
+</tr>
+<tr>
+<td>Checkpointing operations</td>
+<td>Save, Store</td>
+</tr>
+<tr>
+<td>Queue and synchronization operations</td>
+<td>Enqueue, Dequeue, MutexAcquire, MutexRelease</td>
+</tr>
+<tr>
+<td>Control flow operations</td>
+<td>Merge, Switch, Enter, Leave, NextIteration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Tensorboard"><a href="#Tensorboard" class="headerlink" title="Tensorboard"></a>Tensorboard</h2><p>为了方便学习TF， TF提供了不错的tensorboard工具，进行可视化地学习TF. 简单的学习Tensorboard的步骤为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tensorflow <span class="keyword">as</span> tf</div><div class="line"></div><div class="line">a = tf.constant(<span class="number">2</span>)</div><div class="line">b = tf.constant(<span class="number">3</span>)</div><div class="line">x = tf.add(a, b)</div><div class="line"></div><div class="line"><span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</div><div class="line">	writer = tf.summary.FileWriter(<span class="string">'/tmp/tf'</span>, sess.graph)</div><div class="line">	<span class="keyword">print</span> sess.run(x)</div><div class="line">	</div><div class="line">writer.close()</div></pre></td></tr></table></figure>
+<p>使用Tensorflow，然后执行<code>tensorboard --logdir=/tmp/tf</code>, 然后在浏览器里面输入 <a href="http://localhost:6006" target="_blank" rel="external">http://localhost:6006</a> 之后，就可以得到输出结果为</p>
+<p><img src="http://ony0nt8m1.bkt.clouddn.com/tensorboard_add.png" alt="Tensorboard Add可视化"></p>
+<h2 id="Optimizer"><a href="#Optimizer" class="headerlink" title="Optimizer"></a>Optimizer</h2>
         
         </div>
         <footer class="article-footer">
@@ -188,7 +283,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-concept/" data-id="cj72pzsug00002fz8vj51sks7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-concept/" data-id="cj72xtdtz0000uwz8s72jkh9u" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -266,7 +361,7 @@
     
         <a href="/2017/09/02/stanford-tensorflow-class-index/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Stanford大学Tensorflow课程学习总览</div>
+            <div class="article-nav-title">Stanford TF课程总览</div>
         </a>
     
 </nav>
@@ -346,7 +441,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/2017/09/02/stanford-tensorflow-class-concept/" class="title">Stanford大学Tensorflow课程基本概念</a></p>
+                            <p class="item-title"><a href="/2017/09/02/stanford-tensorflow-class-concept/" class="title">Stanford TF基本概念</a></p>
                             <p class="item-date"><time datetime="2017-09-02T02:56:11.000Z" itemprop="datePublished">2017-09-02</time></p>
                         </div>
                     </li>
@@ -355,7 +450,7 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/2017/09/02/stanford-tensorflow-class-index/" class="title">Stanford大学Tensorflow课程学习总览</a></p>
+                            <p class="item-title"><a href="/2017/09/02/stanford-tensorflow-class-index/" class="title">Stanford TF课程总览</a></p>
                             <p class="item-date"><time datetime="2017-09-02T02:28:35.000Z" itemprop="datePublished">2017-09-02</time></p>
                         </div>
                     </li>
