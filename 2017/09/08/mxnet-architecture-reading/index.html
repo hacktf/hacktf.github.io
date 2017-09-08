@@ -3,14 +3,21 @@
 <head>
     <meta charset="utf-8">
     
-    <title>归档: 2017 | To be a hacker!</title>
+    <title>MXNet体系结构学习笔记 | To be a hacker!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="To be a hacker!">
-<meta property="og:url" content="http://www.hacktf.com/archives/2017/index.html">
+    <meta name="description" content="下面是根据MXNet Architecture整理得到的 MXNet作者认为深度学习系统设计(Deep Learning System Design)的几个核心概念为：  Abstraction Optimization Trade-offs between efficiency and flexibility  MXNet系统架构 上图中列出来了MXNet的几个重要模块： 系统级模块  Runt">
+<meta name="keywords" content="MXNet">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MXNet体系结构学习笔记">
+<meta property="og:url" content="http://www.hacktf.com/2017/09/08/mxnet-architecture-reading/index.html">
 <meta property="og:site_name" content="To be a hacker!">
+<meta property="og:description" content="下面是根据MXNet Architecture整理得到的 MXNet作者认为深度学习系统设计(Deep Learning System Design)的几个核心概念为：  Abstraction Optimization Trade-offs between efficiency and flexibility  MXNet系统架构 上图中列出来了MXNet的几个重要模块： 系统级模块  Runt">
+<meta property="og:image" content="https://raw.githubusercontent.com/dmlc/dmlc.github.io/master/img/mxnet/system/overview.png">
+<meta property="og:updated_time" content="2017-09-08T03:14:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="To be a hacker!">
+<meta name="twitter:title" content="MXNet体系结构学习笔记">
+<meta name="twitter:description" content="下面是根据MXNet Architecture整理得到的 MXNet作者认为深度学习系统设计(Deep Learning System Design)的几个核心概念为：  Abstraction Optimization Trade-offs between efficiency and flexibility  MXNet系统架构 上图中列出来了MXNet的几个重要模块： 系统级模块  Runt">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/dmlc/dmlc.github.io/master/img/mxnet/system/overview.png">
     
 
     
@@ -124,25 +131,21 @@
 
         <div class="outer">
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2017</h1>
-            </div>
+            <section id="main"><article id="post-mxnet-architecture-reading" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/09/08/mxnet-architecture-reading/">MXNet体系结构学习笔记</a>
+        <h1 class="article-title" itemprop="name">
+            MXNet体系结构学习笔记
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2017/09/08/mxnet-architecture-reading/">
@@ -151,131 +154,163 @@
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/MXNet/">MXNet</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/09/08/parameter-server-study-notes/">Parameter Server学习笔记</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/08/parameter-server-study-notes/">
-            <time datetime="2017-09-08T02:13:40.000Z" itemprop="datePublished">2017-09-08</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Parameter-Server/">Parameter Server</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#MXNet系统架构"><span class="toc-number">1.</span> <span class="toc-text">MXNet系统架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#系统组件"><span class="toc-number">1.1.</span> <span class="toc-text">系统组件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#执行引擎-Execution-Engine"><span class="toc-number">1.1.1.</span> <span class="toc-text">执行引擎(Execution Engine)</span></a></li></ol></li></ol></li></ol>
                 </div>
-            </div>
+            
+            <p>下面是根据<a href="https://mxnet.incubator.apache.org/architecture/index.html" target="_blank" rel="external">MXNet Architecture</a>整理得到的</p>
+<p>MXNet作者认为深度学习系统设计(<strong>Deep Learning System Design</strong>)的几个核心概念为：</p>
+<ul>
+<li>Abstraction</li>
+<li>Optimization</li>
+<li>Trade-offs between efficiency and flexibility</li>
+</ul>
+<h2 id="MXNet系统架构"><a href="#MXNet系统架构" class="headerlink" title="MXNet系统架构"></a>MXNet系统架构</h2><p><img src="https://raw.githubusercontent.com/dmlc/dmlc.github.io/master/img/mxnet/system/overview.png" alt="MXNet系统总览"></p>
+<p>上图中列出来了MXNet的几个重要模块：</p>
+<p><strong>系统级模块</strong></p>
+<ul>
+<li>Runtime Dependency Engine, 核心引擎，调度和执行各个算子的操作(operations)</li>
+<li>Storage Allocator, 存储分配器，包括分配和回收CPU/GPU的内存块</li>
+<li>Resource Manager, 资源管理器，管理全局的资源如随机数生成器、临时空间等等</li>
+<li>Operators, 各个算子的定义，包括前向和反向计算</li>
+</ul>
+<p><strong>用户级模块</strong></p>
+<ul>
+<li>NDArray， 类似于Tensorflow中Tensor?</li>
+<li>Symbol Construction, 符号构建来构建一个Graph</li>
+<li>Symbol Execution, 静态的图执行器，对Symbol Construction构建的图进行执行和优化</li>
+<li>KVStore, 为参数同步而提供的KV存储接口</li>
+<li>Data Loading(IO), 对分布式数据进行加载</li>
+</ul>
+<h3 id="系统组件"><a href="#系统组件" class="headerlink" title="系统组件"></a>系统组件</h3><h4 id="执行引擎-Execution-Engine"><a href="#执行引擎-Execution-Engine" class="headerlink" title="执行引擎(Execution Engine)"></a>执行引擎(Execution Engine)</h4><p>执行引擎(Execution Engine)解决的是一个通用问题：<strong>遵循任务依赖的顺序执行一堆的函数</strong>。</p>
+<p>核心接口为:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">PushSync</span><span class="params">(Fn exec_fun, Context exec_ctx,</span></span></div><div class="line">                      <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;VarHandle&gt; <span class="keyword">const</span>&amp; const_vars,</div><div class="line">                      <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;VarHandle&gt; <span class="keyword">const</span>&amp; mutate_vars) = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/09/02/stanford-tensorflow-class-concept/">Stanford TF基本概念</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/02/stanford-tensorflow-class-concept/">
-            <time datetime="2017-09-02T02:56:11.000Z" itemprop="datePublished">2017-09-02</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/CS20SI/">CS20SI</a>, <a class="tag-link" href="/tags/Tensorflow/">Tensorflow</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2017/09/02/stanford-tensorflow-class-index/">Stanford TF课程总览</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/02/stanford-tensorflow-class-index/">
-            <time datetime="2017-09-02T02:28:35.000Z" itemprop="datePublished">2017-09-02</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/CS20SI/">CS20SI</a>, <a class="tag-link" href="/tags/Tensorflow/">Tensorflow</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
+
+    <a data-url="http://www.hacktf.com/2017/09/08/mxnet-architecture-reading/" data-id="cj7bb7vh500009iz8m4b8zg6i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2017/09/08/parameter-server-study-notes/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Parameter Server学习笔记</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+        <section id="comments">
+	<div id="commentContainer"></div>
+</section>
+    
+
 </section>
             
                 
