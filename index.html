@@ -195,6 +195,26 @@
 <h3 id="系统组件"><a href="#系统组件" class="headerlink" title="系统组件"></a>系统组件</h3><h4 id="执行引擎-Execution-Engine"><a href="#执行引擎-Execution-Engine" class="headerlink" title="执行引擎(Execution Engine)"></a>执行引擎(Execution Engine)</h4><p>执行引擎(Execution Engine)解决的是一个通用问题：<strong>遵循任务依赖的顺序执行一堆的函数</strong>。</p>
 <p>核心接口为:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">PushSync</span><span class="params">(Fn exec_fun, Context exec_ctx,</span></span></div><div class="line">                      <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;VarHandle&gt; <span class="keyword">const</span>&amp; const_vars,</div><div class="line">                      <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;VarHandle&gt; <span class="keyword">const</span>&amp; mutate_vars) = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+<p>核心类: <code>class mxnet::Engine</code></p>
+<h4 id="算子-Operators"><a href="#算子-Operators" class="headerlink" title="算子(Operators)"></a>算子(Operators)</h4><p>算子是一个即包含有实际计算逻辑和能辅助系统进行优化(in-place updates和auto-derivatives)操作的额外信息的类。</p>
+<p>核心接口:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Forward</span><span class="params">(<span class="keyword">const</span> OpContext &amp;ctx,</span></span></div><div class="line">                     <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;in_data,</div><div class="line">                     <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;OpReqType&gt; &amp;req,</div><div class="line">                     <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;out_data,</div><div class="line">                     <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;aux_states) = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Backward</span><span class="params">(<span class="keyword">const</span> OpContext &amp;ctx,</span></span></div><div class="line">                      <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;out_grad,</div><div class="line">                      <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;in_data,</div><div class="line">                      <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;out_data,</div><div class="line">                      <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;OpReqType&gt; &amp;req,</div><div class="line">                      <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;in_grad,</div><div class="line">                      <span class="keyword">const</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TBlob&gt; &amp;aux_states) = <span class="number">0</span>;</div></pre></td></tr></table></figure>
+<p>对于任何一个算子(Operator)，还会有对应的Operator Property. Operator Property存在有如下几个接口:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">InferShape</span><span class="params">(<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TShape&gt; *in_shape,</span></span></div><div class="line">                        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TShape&gt; *out_shape,</div><div class="line">                        <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TShape&gt; *aux_shape) <span class="keyword">const</span> = <span class="number">0</span>;</div><div class="line"></div><div class="line"><span class="keyword">virtual</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;ResourceRequest&gt; ForwardResource(</div><div class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TShape&gt; &amp;in_shape) <span class="keyword">const</span>;</div><div class="line"><span class="keyword">virtual</span> <span class="built_in">std</span>::<span class="built_in">vector</span>&lt;ResourceRequest&gt; BackwardResource(</div><div class="line">	<span class="built_in">std</span>::<span class="built_in">vector</span>&lt;TShape&gt; &amp;in_shape) <span class="keyword">const</span>;</div></pre></td></tr></table></figure>
+<h3 id="统一NDArray-Operator和Symbolic-Operator"><a href="#统一NDArray-Operator和Symbolic-Operator" class="headerlink" title="统一NDArray Operator和Symbolic Operator"></a>统一NDArray Operator和Symbolic Operator</h3><blockquote>
+<p>TODO： 学习更多的SimpleOp</p>
+</blockquote>
+<h2 id="深度学习编程样式-Programming-Style"><a href="#深度学习编程样式-Programming-Style" class="headerlink" title="深度学习编程样式(Programming Style)"></a>深度学习编程样式(Programming Style)</h2><p>主要是讨论两个方面的问题:</p>
+<ol>
+<li>使用符号式(symbolic) 还是命令式(imperative) 来进行数学计算</li>
+<li>构建更大的网络结构或者更多的原子操作</li>
+</ol>
+<h3 id="符号式和命令式"><a href="#符号式和命令式" class="headerlink" title="符号式和命令式"></a>符号式和命令式</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">  </div><div class="line">a = np.ones(<span class="number">10</span>)</div><div class="line">b = np.ones(<span class="number">10</span>) * <span class="number">2</span></div><div class="line">c = b * a</div><div class="line">d = c + <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>上面的代码，执行<code>d = c + 1</code>之后，能立马得到计算结果，其是命令式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">A = Variable(<span class="string">'A'</span>)</div><div class="line">B = Variable(<span class="string">'B'</span>)</div><div class="line">C = B * A</div><div class="line">D = C + Constant(<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment"># compiles the function</span></div><div class="line">f = compile(D)</div><div class="line">d = f(A=np.ones(<span class="number">10</span>), B=np.ones(<span class="number">10</span>)*<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>得到的计算图(Computation Graph)或者叫做(Symbolic Graph)来表示计算:</p>
+<p><img src="https://raw.githubusercontent.com/dmlc/web-data/master/mxnet/prog_model/comp_graph.png" alt="符号式计算图"></p>
+<p>绝大多数的符号式程序，都会有一个编译的阶段，即将计算图变成后面进行调用的函数。</p>
 
         
         </div>
@@ -205,7 +225,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/08/mxnet-architecture-reading/" data-id="cj7bb7vh500009iz8m4b8zg6i" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/08/mxnet-architecture-reading/" data-id="cj7be7n8o0000ruz8zsaf5zwr" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -336,7 +356,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/08/parameter-server-study-notes/" data-id="cj7b93zme0000vkz8952zf8y2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/08/parameter-server-study-notes/" data-id="cj7be7n8v0002ruz8pz9qjrpk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -584,7 +604,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-concept/" data-id="cj7b8ysjd0000rvz87ub2ohnc" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-concept/" data-id="cj7be7n920007ruz8ipmptx5v" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -721,7 +741,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-index/" data-id="cj7b8ysjj0002rvz8sj2niz6z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-index/" data-id="cj7be7n8z0006ruz8gi8haij7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
