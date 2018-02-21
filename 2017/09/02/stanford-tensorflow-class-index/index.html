@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Stanford TF课程总览 | To be a hacker!</title>
+    <title>Stanford TF课程总览 | 三角洲Hacker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="《CS 20SI: Tensorflow for Deep Learning Research》是Stanford大学开的一门基于Tensorflow的课程，在这门课程中将讲述如何来使用Tensorflow这个工具进行深度学习研究。 注重讲述Tensorflow的图计算模型(Graphical computational model)，并且如何搭建使用深度学习项目的模型。通过该门课程的学习，可以搭">
 <meta name="keywords" content="CS20SI,Tensorflow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Stanford TF课程总览">
 <meta property="og:url" content="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-index/index.html">
-<meta property="og:site_name" content="To be a hacker!">
+<meta property="og:site_name" content="三角洲Hacker">
 <meta property="og:description" content="《CS 20SI: Tensorflow for Deep Learning Research》是Stanford大学开的一门基于Tensorflow的课程，在这门课程中将讲述如何来使用Tensorflow这个工具进行深度学习研究。 注重讲述Tensorflow的图计算模型(Graphical computational model)，并且如何搭建使用深度学习项目的模型。通过该门课程的学习，可以搭">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2017-09-02T06:40:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Stanford TF课程总览">
@@ -46,7 +47,7 @@
         <div class="outer">
             <a href="/" id="logo">
                 <i class="logo"></i>
-                <span class="site-title">To be a hacker!</span>
+                <span class="site-title">三角洲Hacker</span>
             </a>
             <nav id="main-nav">
                 
@@ -177,11 +178,11 @@
                     <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tensorflow基础"><span class="toc-number">1.</span> <span class="toc-text">Tensorflow基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本概念"><span class="toc-number">1.1.</span> <span class="toc-text">基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#构建模型"><span class="toc-number">1.2.</span> <span class="toc-text">构建模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#训练模型"><span class="toc-number">1.3.</span> <span class="toc-text">训练模型</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#深度学习实践"><span class="toc-number">2.</span> <span class="toc-text">深度学习实践</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CNN"><span class="toc-number">2.1.</span> <span class="toc-text">CNN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RNN"><span class="toc-number">2.2.</span> <span class="toc-text">RNN</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#强化训练-Reinforcement-Learning"><span class="toc-number">2.3.</span> <span class="toc-text">强化训练 Reinforcement Learning</span></a></li></ol></li></ol>
                 </div>
             
-            <p>《<a href="https://web.stanford.edu/class/cs20si/" target="_blank" rel="external">CS 20SI: Tensorflow for Deep Learning Research</a>》是Stanford大学开的一门基于Tensorflow的课程，在这门课程中将讲述如何来使用Tensorflow这个工具进行深度学习研究。</p>
+            <p>《<a href="https://web.stanford.edu/class/cs20si/" target="_blank" rel="noopener">CS 20SI: Tensorflow for Deep Learning Research</a>》是Stanford大学开的一门基于Tensorflow的课程，在这门课程中将讲述如何来使用Tensorflow这个工具进行深度学习研究。</p>
 <p>注重讲述Tensorflow的图计算模型(Graphical computational model)，并且如何搭建使用深度学习项目的模型。通过该门课程的学习，可以搭建不同复杂度的模型（从简单的linear/logistic regression模型到复杂的CNN/RNN等模型）去解决word embeddings, translation, OCR等任务。</p>
 <h2 id="Tensorflow基础"><a href="#Tensorflow基础" class="headerlink" title="Tensorflow基础"></a>Tensorflow基础</h2><p>该部分主要讲述Graph, Session, Tensorboard, Operations, Optimizer等基本概念，然后深入到模型层级来展开如何来构建模型，如何训练模型</p>
 <h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>在Tensorflow中，Graph和Session是非常基础的概念，在Python接口中暴露出来的分别是<code>tf.Graph</code>和<code>tf.Session</code>，对Graph和Session简单定义为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">* Graph: A graph defines the computation. 仅仅只是定义了计算，不进行任何的计算，也不会保存任何的值。</div><div class="line">* Session: A session allows to execute graphs or part of graphs. 在Session中分配所需要的资源，并且保存结果和变量的中间状态</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* Graph: A graph defines the computation. 仅仅只是定义了计算，不进行任何的计算，也不会保存任何的值。</span><br><span class="line">* Session: A session allows to execute graphs or part of graphs. 在Session中分配所需要的资源，并且保存结果和变量的中间状态</span><br></pre></td></tr></table></figure>
 <p>详见<a href="/2017/09/02/stanford-tensorflow-class-concept/" title="Stanford TF基本概念">Stanford TF基本概念</a></p>
 <h3 id="构建模型"><a href="#构建模型" class="headerlink" title="构建模型"></a>构建模型</h3><p>以word2vec为例来说明如何构建TF模型</p>
 <h3 id="训练模型"><a href="#训练模型" class="headerlink" title="训练模型"></a>训练模型</h3><h2 id="深度学习实践"><a href="#深度学习实践" class="headerlink" title="深度学习实践"></a>深度学习实践</h2><p>包括使用Tensorflow来进行CNN, RNN等深度学习模型实践</p>
@@ -195,7 +196,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-index/" data-id="cj7be7n8z0006ruz8gi8haij7" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/2017/09/02/stanford-tensorflow-class-index/" data-id="cjdx8j2jf0008y12d781i5rdo" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -448,7 +449,7 @@
         <footer id="footer">
     <div class="outer">
         <div id="footer-info" class="inner">
-            &copy; 2017 hacktf| <a href=http://www.hacktf.com > To be a hacker!</a><br>
+            &copy; 2018 hacktf| <a href=http://www.hacktf.com > 三角洲Hacker</a><br>
         </div>
     </div>
 </footer>
