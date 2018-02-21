@@ -3,20 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Parameter Server学习笔记 | 三角洲Hacker</title>
+    <title>大数据资料整理 | 三角洲Hacker</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="学习课程CMU Machine Learning课程链接: https://www.youtube.com/watch?v=N241lmq5mqk muli分享分享链接：https://www.youtube.com/watch?v=SJgh4Mzqv-U 业界实现mli版parameter servertencent版angelalibaba版kunpengtensorflow版paramete">
-<meta name="keywords" content="Parameter Server">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Parameter Server学习笔记">
-<meta property="og:url" content="http://www.hacktf.com/2017/09/08/parameter-server-study-notes/index.html">
+    <meta name="description" content="大数据存储大数据处理Apache Beam">
+<meta property="og:type" content="website">
+<meta property="og:title" content="大数据资料整理">
+<meta property="og:url" content="http://www.hacktf.com/bigdata/index.html">
 <meta property="og:site_name" content="三角洲Hacker">
-<meta property="og:description" content="学习课程CMU Machine Learning课程链接: https://www.youtube.com/watch?v=N241lmq5mqk muli分享分享链接：https://www.youtube.com/watch?v=SJgh4Mzqv-U 业界实现mli版parameter servertencent版angelalibaba版kunpengtensorflow版paramete">
+<meta property="og:description" content="大数据存储大数据处理Apache Beam">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-09-08T02:46:11.000Z">
+<meta property="og:updated_time" content="2018-02-21T15:56:44.060Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Parameter Server学习笔记">
-<meta name="twitter:description" content="学习课程CMU Machine Learning课程链接: https://www.youtube.com/watch?v=N241lmq5mqk muli分享分享链接：https://www.youtube.com/watch?v=SJgh4Mzqv-U 业界实现mli版parameter servertencent版angelalibaba版kunpengtensorflow版paramete">
+<meta name="twitter:title" content="大数据资料整理">
+<meta name="twitter:description" content="大数据存储大数据处理Apache Beam">
     
 
     
@@ -52,6 +51,14 @@
             <nav id="main-nav">
                 
                     <a class="main-nav-link" href="/.">首页</a>
+                
+                    <a class="main-nav-link" href="/distsys">分布式系统</a>
+                
+                    <a class="main-nav-link" href="/ai">人工智能</a>
+                
+                    <a class="main-nav-link" href="/bigdata">大数据</a>
+                
+                    <a class="main-nav-link" href="/cloud">云计算</a>
                 
                     <a class="main-nav-link" href="/archives">时间轴</a>
                 
@@ -108,6 +115,14 @@
                 
                     <td><a class="main-nav-link" href="/.">首页</a></td>
                 
+                    <td><a class="main-nav-link" href="/distsys">分布式系统</a></td>
+                
+                    <td><a class="main-nav-link" href="/ai">人工智能</a></td>
+                
+                    <td><a class="main-nav-link" href="/bigdata">大数据</a></td>
+                
+                    <td><a class="main-nav-link" href="/cloud">云计算</a></td>
+                
                     <td><a class="main-nav-link" href="/archives">时间轴</a></td>
                 
                     <td><a class="main-nav-link" href="/categories">分类</a></td>
@@ -130,7 +145,7 @@
 
         <div class="outer">
             
-            <section id="main"><article id="post-parameter-server-study-notes" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -138,34 +153,10 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Parameter Server学习笔记
+            大数据资料整理
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2017/09/08/parameter-server-study-notes/">
-            <time datetime="2017-09-08T02:13:40.000Z" itemprop="datePublished">2017-09-08</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/深度学习/">深度学习</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Parameter-Server/">Parameter Server</a>
-    </div>
-
-                    </div>
                 
             </header>
         
@@ -173,14 +164,7 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#学习课程"><span class="toc-number">1.</span> <span class="toc-text">学习课程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CMU-Machine-Learning"><span class="toc-number">1.1.</span> <span class="toc-text">CMU Machine Learning</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#muli分享"><span class="toc-number">1.2.</span> <span class="toc-text">muli分享</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#业界实现"><span class="toc-number">2.</span> <span class="toc-text">业界实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mli版parameter-server"><span class="toc-number">2.1.</span> <span class="toc-text">mli版parameter server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tencent版angel"><span class="toc-number">2.2.</span> <span class="toc-text">tencent版angel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#alibaba版kunpeng"><span class="toc-number">2.3.</span> <span class="toc-text">alibaba版kunpeng</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tensorflow版parameter-server"><span class="toc-number">2.4.</span> <span class="toc-text">tensorflow版parameter server</span></a></li></ol></li></ol>
-                </div>
-            
-            <h2 id="学习课程"><a href="#学习课程" class="headerlink" title="学习课程"></a>学习课程</h2><h3 id="CMU-Machine-Learning"><a href="#CMU-Machine-Learning" class="headerlink" title="CMU Machine Learning"></a>CMU Machine Learning</h3><p>课程链接: <a href="https://www.youtube.com/watch?v=N241lmq5mqk" target="_blank" rel="noopener">https://www.youtube.com/watch?v=N241lmq5mqk</a></p>
-<h3 id="muli分享"><a href="#muli分享" class="headerlink" title="muli分享"></a>muli分享</h3><p>分享链接：<a href="https://www.youtube.com/watch?v=SJgh4Mzqv-U" target="_blank" rel="noopener">https://www.youtube.com/watch?v=SJgh4Mzqv-U</a></p>
-<h2 id="业界实现"><a href="#业界实现" class="headerlink" title="业界实现"></a>业界实现</h2><h3 id="mli版parameter-server"><a href="#mli版parameter-server" class="headerlink" title="mli版parameter server"></a>mli版parameter server</h3><h3 id="tencent版angel"><a href="#tencent版angel" class="headerlink" title="tencent版angel"></a>tencent版angel</h3><h3 id="alibaba版kunpeng"><a href="#alibaba版kunpeng" class="headerlink" title="alibaba版kunpeng"></a>alibaba版kunpeng</h3><h3 id="tensorflow版parameter-server"><a href="#tensorflow版parameter-server" class="headerlink" title="tensorflow版parameter server"></a>tensorflow版parameter server</h3>
+            <h2 id="大数据存储"><a href="#大数据存储" class="headerlink" title="大数据存储"></a>大数据存储</h2><h2 id="大数据处理"><a href="#大数据处理" class="headerlink" title="大数据处理"></a>大数据处理</h2><h3 id="Apache-Beam"><a href="#Apache-Beam" class="headerlink" title="Apache Beam"></a><a href="beam">Apache Beam</a></h3>
         
         </div>
         <footer class="article-footer">
@@ -190,7 +174,7 @@
 
 </div>
 
-    <a data-url="http://www.hacktf.com/2017/09/08/parameter-server-study-notes/" data-id="cjdx8j2j80002y12doa6q0p8c" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://www.hacktf.com/bigdata/index.html" data-id="cjdx962j40000je2dvu4rqclq" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -263,25 +247,6 @@
     </div>
     
         
-<nav id="article-nav">
-    
-        <a href="/2017/09/08/mxnet-architecture-reading/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    MXNet体系结构学习笔记
-                
-            </div>
-        </a>
-    
-    
-        <a href="/2017/09/02/stanford-tensorflow-class-concept/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Stanford TF基本概念</div>
-        </a>
-    
-</nav>
-
 
     
 </article>
@@ -309,11 +274,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                4
+                1
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                4
+                2
                 <span>标签</span>
             </div>
         </div>
@@ -357,33 +322,6 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/2017/09/08/mxnet-architecture-reading/" class="title">MXNet体系结构学习笔记</a></p>
-                            <p class="item-date"><time datetime="2017-09-08T02:49:08.000Z" itemprop="datePublished">2017-09-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/2017/09/08/parameter-server-study-notes/" class="title">Parameter Server学习笔记</a></p>
-                            <p class="item-date"><time datetime="2017-09-08T02:13:40.000Z" itemprop="datePublished">2017-09-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
-                            <p class="item-title"><a href="/2017/09/02/stanford-tensorflow-class-concept/" class="title">Stanford TF基本概念</a></p>
-                            <p class="item-date"><time datetime="2017-09-02T02:56:11.000Z" itemprop="datePublished">2017-09-02</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/深度学习/">深度学习</a></p>
                             <p class="item-title"><a href="/2017/09/02/stanford-tensorflow-class-index/" class="title">Stanford TF课程总览</a></p>
                             <p class="item-date"><time datetime="2017-09-02T02:28:35.000Z" itemprop="datePublished">2017-09-02</time></p>
                         </div>
@@ -398,7 +336,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">4</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/深度学习/">深度学习</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -407,7 +345,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">4</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a><span class="archive-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -416,7 +354,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/CS20SI/" style="font-size: 20px;">CS20SI</a> <a href="/tags/MXNet/" style="font-size: 10px;">MXNet</a> <a href="/tags/Parameter-Server/" style="font-size: 10px;">Parameter Server</a> <a href="/tags/Tensorflow/" style="font-size: 20px;">Tensorflow</a>
+            <a href="/tags/CS20SI/" style="font-size: 10px;">CS20SI</a> <a href="/tags/Tensorflow/" style="font-size: 10px;">Tensorflow</a>
         </div>
     </div>
 
