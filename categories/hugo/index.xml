@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on 被好奇害死的猫</title>
+    <link>https://hacktf.com/categories/hugo/</link>
+    <description>Recent content in Hugo on 被好奇害死的猫</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 06 Apr 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hacktf.com/categories/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New Simple Post</title>
+      <link>https://hacktf.com/2018/04/new-simple-post/</link>
+      <pubDate>Fri, 06 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://hacktf.com/2018/04/new-simple-post/</guid>
+      <description>&lt;!--toc--&gt;
+
+&lt;h1 id=&#34;测试用的简单的博客&#34;&gt;测试用的简单的博客&lt;/h1&gt;
+
+&lt;h2 id=&#34;这是二级标题&#34;&gt;这是二级标题&lt;/h2&gt;
+
+&lt;p&gt;hello world&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
